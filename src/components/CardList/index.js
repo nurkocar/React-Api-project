@@ -1,8 +1,11 @@
-import React from "react";
+import React, {useContext} from 'react';
+import { MovieContext } from '../../Movie';
 import { Card } from "../Card";
 import { StyledCardList } from './CardList.style';
 
-export const CardList = ({movieList, baseImageUrl}) => {
+export const CardList = () => {
+
+    const {movieList, baseImageUrl} = useContext(MovieContext);
 
     return (
         <StyledCardList>
@@ -11,10 +14,11 @@ export const CardList = ({movieList, baseImageUrl}) => {
                 (movie, index) => (
 
                     <Card
-                        key={index}
-                        title={movie.title}
-                        imgSrc={baseImageUrl + movie.poster_path}
-                        release_date={movie.release_date}
+                        key= {index}
+                        title= {movie.title}
+                        id= {movie.id}
+                        imgSrc= {baseImageUrl +  movie.poster_path}
+                        release_date= {movie.release_date}
 
                     />)
             )}
